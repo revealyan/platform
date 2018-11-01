@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Utils.Collections;
+using Utils.Collections.Graphs;
 
 namespace Core.Platforms
 {
@@ -78,7 +78,7 @@ namespace Core.Platforms
                     }
                     catch (Exception exc)
                     {
-                        throw new ModuleException("Возникла ошибка при запуске модуля", exc, module.Key);
+                        throw new ModuleInfoException("Возникла ошибка при запуске модуля", exc, module.Key);
                     }
                 }
 

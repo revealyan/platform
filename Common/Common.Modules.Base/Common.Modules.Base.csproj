@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96566250-094F-415C-9197-91E8C52741A0}</ProjectGuid>
+    <ProjectGuid>{46D7FB47-09B6-4862-BA2D-015A3781AC35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Utils.Collections</RootNamespace>
-    <AssemblyName>Utils.Collections</AssemblyName>
+    <RootNamespace>Common.Modules.Base</RootNamespace>
+    <AssemblyName>Common.Modules.Base</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphs\DirectedGraph.cs" />
-    <Compile Include="Exceptions\DuplicateLinkException.cs" />
-    <Compile Include="Exceptions\GraphException.cs" />
-    <Compile Include="Exceptions\NodeNotFoundException.cs" />
-    <Compile Include="Graphs\GraphNode.cs" />
+    <Compile Include="BaseModule.cs" />
+    <Compile Include="Exceptions\ModuleException.cs" />
+    <Compile Include="Exceptions\ResolvingIinvalidInterfaceException.cs" />
+    <Compile Include="Exceptions\RegisteringInvalidInterfaceException.cs" />
+    <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core\Core.csproj">
+      <Project>{DC0A97C4-1FC2-4C70-86CE-6C0342F516AC}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

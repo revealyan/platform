@@ -4,7 +4,7 @@ using Core.Entities;
 
 namespace Core.Exceptions
 {
-    public class DependencyModuleNotFoundException : ModuleException
+    public class DependencyModuleNotFoundException : ModuleInfoException
     {
         #region core
         public DependencyInfo Dependency { get; }

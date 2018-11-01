@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Utils.Collections.Exceptions;
 
-namespace Utils.Collections
+namespace Utils.Collections.Graphs
 {
     public class DirectedGraph
     {

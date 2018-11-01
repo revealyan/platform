@@ -1,4 +1,4 @@
-﻿namespace Utils.Collections
+﻿namespace Utils.Collections.Graphs
 {
     public abstract class GraphNode
     {
