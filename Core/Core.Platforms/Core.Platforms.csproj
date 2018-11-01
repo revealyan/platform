@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC0A97C4-1FC2-4C70-86CE-6C0342F516AC}</ProjectGuid>
+    <ProjectGuid>{984E1E6F-5C2B-4C16-B688-83AF457184F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
+    <RootNamespace>Core.Platforms</RootNamespace>
+    <AssemblyName>Core.Platforms</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,18 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\DependencyInfo.cs" />
-    <Compile Include="Entities\ModuleInfo.cs" />
-    <Compile Include="Enums\PlatformState.cs" />
-    <Compile Include="Exceptions\ConfigurationException.cs" />
-    <Compile Include="Exceptions\DependencyModuleNotFoundException.cs" />
-    <Compile Include="Exceptions\InvalidConfigurationException.cs" />
-    <Compile Include="Exceptions\ModuleException.cs" />
-    <Compile Include="Exceptions\PlatformException.cs" />
-    <Compile Include="IConfiguration.cs" />
-    <Compile Include="IModule.cs" />
-    <Compile Include="IPlatform.cs" />
-    <Compile Include="IService.cs" />
+    <Compile Include="BasePlatform.cs" />
+    <Compile Include="Configurations\FilePlatformConfiguration.cs" />
+    <Compile Include="Configurations\PlatformConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +51,13 @@
       <Project>{96566250-094F-415C-9197-91E8C52741A0}</Project>
       <Name>Utils.Collections</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{dc0a97c4-1fc2-4c70-86ce-6c0342f516ac}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
