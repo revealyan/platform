@@ -175,8 +175,11 @@ namespace Utils.Collections.Graphs
             {
                 foreach (var next in _adjacency[current] as HashSet<GraphNode>)
                 {
-                    PushNext(next);
-                    res.Enqueue(next);
+                    if (!res.Contains(next))
+                    {
+                        PushNext(next);
+                        res.Enqueue(next);
+                    }
                 }
             }
             foreach (var root in _rootLink)
