@@ -59,7 +59,7 @@ namespace Core.Platforms
 
                 foreach (var moduleInfo in queueLoad)
                 {
-                    var module = (IModule)Activator.CreateInstance(Assembly.LoadFrom($"{moduleInfo.Assembly}.dll").GetType(moduleInfo.Class), moduleInfo.Name, moduleInfo.Parameters);
+                    var module = (IModule)Activator.CreateInstance(Assembly.Load(moduleInfo.Assembly).GetType(moduleInfo.Class), moduleInfo.Name, moduleInfo.Parameters);
                     var dependencyModule = new Dictionary<Type, IModule>();
                     foreach (var dInfo in moduleInfo.Dependencies)
                     {
