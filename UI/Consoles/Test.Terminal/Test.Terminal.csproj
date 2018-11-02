@@ -4,25 +4,27 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{984E1E6F-5C2B-4C16-B688-83AF457184F2}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core.Platforms</RootNamespace>
-    <AssemblyName>Core.Platforms</AssemblyName>
+    <ProjectGuid>{93F19C5E-4F23-4D3A-B6F5-53DD3A3C7B0A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Test.Terminal</RootNamespace>
+    <AssemblyName>Test.Terminal</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,28 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasePlatform.cs" />
-    <Compile Include="Configurations\FileConfigurationContainer.cs" />
-    <Compile Include="Configurations\FilePlatformConfiguration.cs" />
-    <Compile Include="Configurations\PlatformConfiguration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Utils\Utils.Collections\Utils.Collections.csproj">
-      <Project>{96566250-094F-415C-9197-91E8C52741A0}</Project>
-      <Name>Utils.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Utils\Utils.Runtime\Utils.Runtime.csproj">
-      <Project>{4CEDD39A-0129-4E6E-ABEF-F7E086F00E3F}</Project>
-      <Name>Utils.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{dc0a97c4-1fc2-4c70-86ce-6c0342f516ac}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
+    <ProjectReference Include="..\..\..\Common\Common.Logger\Common.Logger.csproj">
+      <Project>{1FA82408-9C21-4E84-BE00-33C39CBC5093}</Project>
+      <Name>Common.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Core.Platforms\Core.Platforms.csproj">
+      <Project>{984E1E6F-5C2B-4C16-B688-83AF457184F2}</Project>
+      <Name>Core.Platforms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Core\Core.csproj">
+      <Project>{DC0A97C4-1FC2-4C70-86CE-6C0342F516AC}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

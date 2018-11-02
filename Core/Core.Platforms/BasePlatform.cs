@@ -59,11 +59,11 @@ namespace Core.Platforms
 
                 foreach (var moduleInfo in queueLoad)
                 {
-                    var module = (IModule)Activator.CreateInstance(Assembly.LoadFile($"{moduleInfo.Assembly}.dll").GetType(moduleInfo.Class), moduleInfo.Name, moduleInfo.Parameters);
+                    var module = (IModule)Activator.CreateInstance(Assembly.LoadFrom($"{moduleInfo.Assembly}.dll").GetType(moduleInfo.Class), moduleInfo.Name, moduleInfo.Parameters);
                     var dependencyModule = new Dictionary<Type, IModule>();
                     foreach (var dInfo in moduleInfo.DependecyInfos)
                     {
-                        var dType = Assembly.LoadFile($"{dInfo.Assembly}.dll").GetType(dInfo.Interface);
+                        var dType = Assembly.LoadFrom($"{dInfo.Assembly}.dll").GetType(dInfo.Interface);
                         dependencyModule.Add(dType, Modules.FirstOrDefault(x => x.Key.Name == dInfo.Name).Value);
                     }
                     module.SetDependencies(dependencyModule);
@@ -120,6 +120,11 @@ namespace Core.Platforms
                 throw new PlatformException("Произошла ошибка при перезапуске платформы", exc);
             }
         }
+
+        public IList<IModule> GetModules() => Modules.Values.ToList();
+        #endregion
+
+        #region BasePlatform
         #endregion
     }
 }

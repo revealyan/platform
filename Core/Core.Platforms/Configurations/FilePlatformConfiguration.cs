@@ -1,10 +1,7 @@
 ﻿using Core.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Utils.Runtime;
 
 namespace Core.Platforms.Configurations
 {
@@ -14,8 +11,6 @@ namespace Core.Platforms.Configurations
     public class FilePlatformConfiguration : PlatformConfiguration
     {
         #region core
-
-
         private readonly string _configPath;
         #endregion
 
@@ -32,7 +27,12 @@ namespace Core.Platforms.Configurations
             if (!File.Exists(_configPath))
                 throw new InvalidConfigurationException($"Не найден файл конфигурации {_configPath}", this);
             var content = File.ReadAllText(_configPath, Encoding.UTF8);
-            //TODO : закончить считывание конфигурации
+            var container = FormatConverter.FromJson<FileConfigurationContainer>(content);
+            Name = container.Name;
+            foreach (var info in container.Modules)
+            {
+                ModuleInfos.Add(info);
+            }
         }
         #endregion
     }

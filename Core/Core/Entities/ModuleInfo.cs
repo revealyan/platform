@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Utils.Collections;
+using Utils.Collections.Graphs;
 
 namespace Core.Entities
 {
@@ -40,7 +40,7 @@ namespace Core.Entities
         #endregion
         
         #region GraphNode
-        public override bool Equals(object obj) => obj is ModuleInfo info && info.Name == Name && info.Assembly == Assembly && info.Implementation == Implementation;
+        public override bool Equals(object obj) => obj is ModuleInfo info && info.Name == Name && info.Assembly == Assembly && info.Class == Class;
 
         public override int GetHashCode()
         {

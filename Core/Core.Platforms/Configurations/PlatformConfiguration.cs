@@ -9,6 +9,7 @@ namespace Core.Platforms.Configurations
     public abstract class PlatformConfiguration : IConfiguration
     {
         #region core
+        public string Name { get; set; }
         public IList<ModuleInfo> ModuleInfos { get; }
         #endregion
 

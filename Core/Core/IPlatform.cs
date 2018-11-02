@@ -1,4 +1,6 @@
-﻿namespace Core
+﻿using System.Collections.Generic;
+
+namespace Core
 {
     /// <summary>
     /// Интерфейс для реализации платформы
@@ -17,6 +19,11 @@
         /// Перезапуск
         /// </summary>
         void Restart();
+        /// <summary>
+        /// Возвращает список всех компонентов
+        /// </summary>
+        /// <returns>Список всех компонентов запущеных в платформе</returns>
+        IList<IModule> GetModules();
     }
 
 }

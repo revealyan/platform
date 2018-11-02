@@ -4,10 +4,7 @@ using log4net.Config;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common.Logger.Log4Net
 {
@@ -36,6 +33,10 @@ namespace Common.Logger.Log4Net
                 throw new Exception("Нет файла конфигурации");
             XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetEntryAssembly()), new FileInfo(_configurationPath));
         }
+        public override void Shutdown()
+        {
+            base.Shutdown();
+        }
         #endregion
 
         #region ILogger
@@ -43,40 +44,58 @@ namespace Common.Logger.Log4Net
         #region Debug
         public void LogDebug(string message)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Debug(message);
+            }
         }
         #endregion
 
         #region Info
         public void LogInfo(string message)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Info(message);
+            }
         }
         #endregion
 
         #region Warn
         public void LogWarn(string message)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Warn(message);
+            }
         }
         #endregion
 
         #region Error
         public void LogError(string message)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Error(message);
+            }
         }
 
         public void LogError(Exception exception, string message = null)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Error(message, exception);
+            }
         }
         #endregion
 
         #region Fatal
         public void LogFatal(string message)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _log.Fatal(message);
+            }
         }
         #endregion
 

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,15 +48,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.Logger\Common.Logger.csproj">
+    <ProjectReference Include="..\Common.Logger\Common.Logger.csproj">
       <Project>{1fa82408-9c21-4e84-be00-33c39cbc5093}</Project>
       <Name>Common.Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\Common.Modules.Base\Common.Modules.Base.csproj">
+    <ProjectReference Include="..\Common.Modules.Base\Common.Modules.Base.csproj">
       <Project>{46D7FB47-09B6-4862-BA2D-015A3781AC35}</Project>
       <Name>Common.Modules.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Core\Core.csproj">
+    <ProjectReference Include="..\..\Core\Core\Core.csproj">
       <Project>{DC0A97C4-1FC2-4C70-86CE-6C0342F516AC}</Project>
       <Name>Core</Name>
     </ProjectReference>
