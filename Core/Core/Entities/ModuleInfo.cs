@@ -24,7 +24,7 @@ namespace Core.Entities
         /// <summary>
         /// Информация о зависимостях(также модули)
         /// </summary>
-        public DependencyInfo[] DependecyInfos { get; set; }
+        public DependencyInfo[] Dependencies { get; set; }
         /// <summary>
         /// Параметры, необходимые для старта модуля
         /// </summary>
@@ -34,7 +34,7 @@ namespace Core.Entities
         #region init
         public ModuleInfo()
         {
-            DependecyInfos = new DependencyInfo[0];
+            Dependencies = new DependencyInfo[0];
             Parameters = new Dictionary<string, string>();
         }
         #endregion

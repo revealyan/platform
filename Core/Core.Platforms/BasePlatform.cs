@@ -40,10 +40,10 @@ namespace Core.Platforms
                 var graph = new DirectedGraph(Configuration.ModuleInfos.ToArray());
                 foreach (var moduleInfo in Configuration.ModuleInfos)
                 {
-                    var dModuleInfos = moduleInfo.DependecyInfos.Select(x => Configuration.ModuleInfos.FirstOrDefault(y => x.Name == y.Name));
+                    var dModuleInfos = moduleInfo.Dependencies.Select(x => Configuration.ModuleInfos.FirstOrDefault(y => x.Name == y.Name));
 
                     if (dModuleInfos.Any(x => x == null))
-                        throw new DependencyModuleNotFoundException(moduleInfo, moduleInfo.DependecyInfos.FirstOrDefault(x => !dModuleInfos.Any(y => y.Name == x.Name)));
+                        throw new DependencyModuleNotFoundException(moduleInfo, moduleInfo.Dependencies.FirstOrDefault(x => !dModuleInfos.Any(y => y.Name == x.Name)));
 
                     foreach (var dModuleInfo in dModuleInfos)
                     {
@@ -61,7 +61,7 @@ namespace Core.Platforms
                 {
                     var module = (IModule)Activator.CreateInstance(Assembly.LoadFrom($"{moduleInfo.Assembly}.dll").GetType(moduleInfo.Class), moduleInfo.Name, moduleInfo.Parameters);
                     var dependencyModule = new Dictionary<Type, IModule>();
-                    foreach (var dInfo in moduleInfo.DependecyInfos)
+                    foreach (var dInfo in moduleInfo.Dependencies)
                     {
                         var dType = Assembly.LoadFrom($"{dInfo.Assembly}.dll").GetType(dInfo.Interface);
                         dependencyModule.Add(dType, Modules.FirstOrDefault(x => x.Key.Name == dInfo.Name).Value);

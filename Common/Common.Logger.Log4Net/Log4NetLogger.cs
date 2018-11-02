@@ -1,4 +1,5 @@
-﻿using Common.Modules.Base;
+﻿using Common.Logger.Interface;
+using Common.Modules.Base;
 using log4net;
 using log4net.Config;
 using System;
@@ -13,7 +14,7 @@ namespace Common.Logger.Log4Net
         #region core
         private readonly ILog _log;
         private string _configurationPath;
-        private object _locker = new object();
+        private readonly object _locker = new object();
         #endregion
 
         #region init

@@ -50,9 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Common.Logger\Common.Logger.csproj">
-      <Project>{1FA82408-9C21-4E84-BE00-33C39CBC5093}</Project>
-      <Name>Common.Logger</Name>
+    <ProjectReference Include="..\..\..\Common\Common.Database.Interface\Common.Database.Interface.csproj">
+      <Project>{E49D6634-1451-470B-BCCB-74BD8C5F090A}</Project>
+      <Name>Common.Database.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Common.Logger.Interface\Common.Logger.Interface.csproj">
+      <Project>{A3A54316-BE02-4801-A0BB-AB5DD3509DF2}</Project>
+      <Name>Common.Logger.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Core.Platforms\Core.Platforms.csproj">
       <Project>{984E1E6F-5C2B-4C16-B688-83AF457184F2}</Project>
