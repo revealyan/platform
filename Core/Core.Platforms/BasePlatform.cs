@@ -63,7 +63,7 @@ namespace Core.Platforms
                     var dependencyModule = new Dictionary<Type, IModule>();
                     foreach (var dInfo in moduleInfo.Dependencies)
                     {
-                        var dType = Assembly.Load(moduleInfo.Assembly).GetType(dInfo.Interface);
+                        var dType = Assembly.Load(dInfo.Assembly).GetType(dInfo.Interface);
                         dependencyModule.Add(dType, Modules.FirstOrDefault(x => x.Key.Name == dInfo.Name).Value);
                     }
                     module.SetDependencies(dependencyModule);

@@ -12,8 +12,9 @@ namespace Common.Logger.Log4Net
     public class Log4NetLogger : BaseModule, ILogger
     {
         #region core
-        private readonly ILog _log;
+        private ILog _log;
         private string _configurationPath;
+        private string _loggerName;
         private readonly object _locker = new object();
         #endregion
 
@@ -21,7 +22,6 @@ namespace Common.Logger.Log4Net
         public Log4NetLogger(string name, IDictionary<string, string> parameters) : base(name, parameters)
         {
             RegisterInterface<ILogger>(this);
-            _log = LogManager.GetLogger(typeof(Log4NetLogger));
         }
         #endregion
 
@@ -30,9 +30,15 @@ namespace Common.Logger.Log4Net
         {
             base.Startup();
             _configurationPath = Parameters["config"];
+            _loggerName = Parameters["loggerName"];
+            XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetAssembly(typeof(Log4NetLogger))), new FileInfo(_configurationPath));
+
+            _configurationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase.Substring(Assembly.GetExecutingAssembly().CodeBase.IndexOf("file") + 8)) + @"\" + _configurationPath;
             if (!File.Exists(_configurationPath))
                 throw new Exception("Нет файла конфигурации");
-            XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetEntryAssembly()), new FileInfo(_configurationPath));
+            var fileInfo = new FileInfo(_configurationPath);
+            XmlConfigurator.Configure(fileInfo);
+            _log = LogManager.GetLogger(_loggerName);
         }
         public override void Shutdown()
         {
